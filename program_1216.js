@@ -52,7 +52,7 @@ function minWorker(times) {
 
 function main() {
     const svg = d3.select("#arrowDiagram");
-
+    //svg = selection.remove();
     /** 矢印を描画する関数
      * 
      * @param {number} startX 開始地点(x)
