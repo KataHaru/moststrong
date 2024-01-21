@@ -6,7 +6,7 @@
     let time1 = [];
     var value2 = [];
     let time2 = [];
-    const d = null;
+    let d = null;
   </script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
   <script src="program_1216.js"></script>
@@ -121,24 +121,48 @@ h3:after {
       var inputs = document.getElementsByClassName('koutei1');
       // 各input要素から値を取得して配列に格納
       for (var i = 0; i < inputs.length; i++) {
-        value1.push(inputs[i].value);
+        if(!(inputs[i].value == "")){
+          value1.push(inputs[i].value);
+        }        
       }
+      
 
       inputs = document.getElementsByClassName('tim1');
-      for (var i = 0; i < inputs.length; i++) {
-        time1.push(parseInt(inputs[i].value,10));
+      for (var i = 0; i < inputs.length; i++) {        
+        if(!(inputs[i].value == "")){
+          time1.push(parseInt(inputs[i].value,10));
+        }
       }
 
       inputs = document.getElementsByClassName('koutei2');
       // 各input要素から値を取得して配列に格納
       for (var i = 0; i < inputs.length; i++) {
-        value2.push(inputs[i].value);
+        if(!(inputs[i].value == "")){
+          value2.push(inputs[i].value);       
+        }
       }
 
       inputs = document.getElementsByClassName('tim2');
-      for (var i = 0; i < inputs.length; i++) {
-        time2.push(parseInt(inputs[i].value,10));
+      for (var i = 0; i < inputs.length; i++) {        
+        if(!(inputs[i].value == "")){
+          time2.push(parseInt(inputs[i].value,10));       
+        }
       }
+
+      const element = document.getElementById("graph");
+
+      if(!(d == null)){
+        element.removeChild(d);
+      }
+      
+      d = document.createElementNS("http://www.w3.org/2000/svg","svg");
+
+      d.setAttribute('id','arrowDiagram');
+      d.setAttribute('width','5000');
+      d.setAttribute('height','1200');
+
+      element.appendChild(d);
+      
 
       /*const element = document.getElementById("graph");
 
@@ -152,6 +176,7 @@ h3:after {
       //d.setAttribute('width','5000');
       //d.setAttribute('height','1200');
 
+      <svg id="arrowDiagram" width="5000" height="1200"></svg>
       
       element.appendChild(d);
       */
@@ -185,7 +210,7 @@ h3:after {
   
 </script>
 <div id="graph">
-  <svg id="arrowDiagram" width="5000" height="1200"></svg>
+  
 </div>
 </body>
 </html>
